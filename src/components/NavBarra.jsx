@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
 const NavBar = () => {
+  const usuarioNome = localStorage.getItem("userName");
   return (
     <div>
       <Navbar bg="dark" data-bs-theme="dark">
@@ -20,7 +21,7 @@ const NavBar = () => {
             <Nav.Link href="/cadastro/usuario">Cadastrar Funcionario</Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
-              <Navbar.Text style={{color: "white" }}></Navbar.Text>
+          <Navbar.Text style={{color: "white" }}>Usuário:{usuarioNome}</Navbar.Text>
               <Nav.Link href="/" >Sair</Nav.Link>
             </Nav>
         </Container>
