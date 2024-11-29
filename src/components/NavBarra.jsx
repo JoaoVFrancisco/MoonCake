@@ -16,8 +16,8 @@ const NavBar = () => {
           <Navbar.Brand href="/home">MoonCake</Navbar.Brand>
           {/* Paginas */}
           <Nav className="me-auto">
-            <Nav.Link href="/">Cadastrar Items</Nav.Link>
-            <Nav.Link href="/">Cadastrar Funcionario</Nav.Link>
+            <Nav.Link href="/produto/cadastrar">Cadastrar Items</Nav.Link>
+            <Nav.Link href="/cadastro/usuario">Cadastrar Funcionario</Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
               <Navbar.Text style={{color: "white" }}></Navbar.Text>

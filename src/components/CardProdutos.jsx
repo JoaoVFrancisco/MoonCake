@@ -3,29 +3,41 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from 'react-bootstrap/Button';
 
 function CardProdutos(props) {
+
+  const handleDelete = async (e) => {
+
+    const req = await fetch(`http://localhost:5000/produtos/${props.id}`,
+      {
+        method:"DELETE"
+      });
+      const res =  await req.json()
+      console.log(res)
+      alert(`Produto ${res.nome} removido`)
+  };
   return (
     <div>
-      <Card style={{ width: "16rem", height: "25rem" }}>
+      <Card style={{ width: "16rem", height: "30rem" }}>
         <Card.Img
           variant="top"
-          src="https://images.squarespace-cdn.com/content/v1/55be995de4b071c106b3b4c0/6d4e2689-dc51-46ef-95ec-7f74c3ba1f91/Caramel+Almond+Mooncake-2.jpg?format=500w"
+          src={props.imagemUrl}
+          height="200px"
         />
         <Card.Body>
-          <Card.Title>Moon Cake</Card.Title>
-          <Card.Text>Bolo da casa</Card.Text>
+          <Card.Title>{props.nome}</Card.Title>
+          <Card.Text><b> Descrição: </b> <br></br> {props.descricao}</Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroup.Item>Preço: 50,00$</ListGroup.Item>
-          <ListGroup.Item>Categoria: Bolo</ListGroup.Item>
+          <ListGroup.Item>Preço: {props.preco}</ListGroup.Item>
+          <ListGroup.Item><b> Categoria: </b> <br></br> {props.categoria}</ListGroup.Item>
         </ListGroup>
         <Card.Body>
-          <Card.Link href="/Editar">
+          <Card.Link href={`/produto/editar/${props.id}`}>
             <Button variant="warning">
                 Editar
             </Button>
           </Card.Link>
           <Card.Link href="/home">
-          <Button variant="danger">
+          <Button variant="danger" type="Button" onClick={handleDelete}>
             Excluir
           </Button>
           </Card.Link>
